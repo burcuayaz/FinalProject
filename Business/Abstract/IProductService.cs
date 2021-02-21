@@ -7,6 +7,8 @@ namespace Business.Abstract
 {
     public interface IProductService
     {
-        List<Product> GetAll();
+        List<Product> GetAll();//Tümünü getir
+        List<Product> GetAllByCategoryid(int id); //Kategori id ye göre getir.
+        List<Product> GetByUnitPrice(decimal min, decimal max);//Min ve max değerlerini getir
     }
 }

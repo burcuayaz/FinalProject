@@ -34,7 +34,11 @@ namespace DataAccess.Concrete.Entityframework
 
         public Product Get(Expression<Func<Product, bool>> filter)
         {
-            throw new NotImplementedException();
+            using (NortwindContext context=new NortwindContext())
+            {
+                return context.Set<Product>().SingleOrDefault(filter);
+            }
+
         }
 
         public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
@@ -42,7 +46,9 @@ namespace DataAccess.Concrete.Entityframework
             using (NortwindContext context=new NortwindContext())
             {
                 //filtre yoksa tüm listeyi getir.Eğer bir filtre var ise önce filtreyi uygula sonra listele ve döndür
-                return filter == null ? context.Set<Product>().ToList() : context.Set<Product>().Where(filter).ToList();
+                return filter == null
+                    ? context.Set<Product>().ToList() 
+                    : context.Set<Product>().Where(filter).ToList();
             }
         }
 

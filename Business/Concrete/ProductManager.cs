@@ -10,11 +10,11 @@ namespace Business.Concrete
 {
     public class ProductManager : IProductService
     {
-        IProductDal _ProductDal;
+        IProductDal _productDal;
 
         public ProductManager(IProductDal productDal)
         {
-            _ProductDal = productDal;
+            _productDal = productDal;
         }
 
 
@@ -23,7 +23,17 @@ namespace Business.Concrete
         public List<Product> GetAll()
         {
             //İş kodları
-            return _ProductDal.GetAll();
+            return _productDal.GetAll();
+        }
+
+        public List<Product> GetAllByCategoryid(int id)
+        {
+            return _productDal.GetAll(p=>p.CategoryId==id);
+        }
+
+        public List<Product> GetByUnitPrice(decimal min, decimal max)
+        {
+            return _productDal.GetAll(p => p.UnitPrice >= min && p.UnitPrice <= max);//iki fiyat aralığındaki datayı bize getirecek.
         }
     }
 }
