@@ -3,13 +3,11 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.Entityframework
 {
-    public class EfCustomerDal : EfEntityRepositoryBase<Customer, NortwindContext>, ICustomerDal
+    class EfOrderDal: EfEntityRepositoryBase<Order, NortwindContext>, IOrderDal
     {
-       
     }
 }

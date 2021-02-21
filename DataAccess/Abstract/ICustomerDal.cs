@@ -8,5 +8,6 @@ namespace DataAccess.Abstract
 {
     public interface ICustomerDal:IEntityRepository<Customer>
     {
+        //Customera ait özel kodlar burda yazılacak
     }
 }

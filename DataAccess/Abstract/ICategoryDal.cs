@@ -8,5 +8,6 @@ namespace DataAccess.Abstract
 {
     public interface ICategoryDal:IEntityRepository<Category>
     {
+        //categorye ait özel kodlar burda yazılacak
     }
 }
