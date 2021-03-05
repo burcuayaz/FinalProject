@@ -5,28 +5,37 @@ using System;
 
 namespace ConsoleUI
 {
+    //SOLID
+    //Open Closed principle
     class Program
     {
-        //SOLID
-        //Open Closed principle
         static void Main(string[] args)
         {
-            //ProductTest();
+            //DTO taşınacak objelerdir.
+            ProductTest();
+            //CategoryTest();
+
+        }
+        private static void CategoryTest()
+        {
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+
             foreach (var category in categoryManager.GetAll())
             {
                 Console.WriteLine(category.CategoryName);
             }
         }
 
-        private static void ProductTest()
-        {
-            ProductManager productManager = new ProductManager(new EfProductDal());
-
-            foreach (var product in productManager.GetByUnitPrice(50, 100))
+            private static void ProductTest()
             {
-                Console.WriteLine(product.ProductName);
+                ProductManager productManager = new ProductManager(new EfProductDal());
+
+                foreach (var product in productManager.GetProductDetails())
+                {
+                    Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+                }
             }
         }
     }
-}
+    
+
